@@ -1,0 +1,11 @@
+- clean: ['~']
+
+- link:
+    ~/.fonts: fonts
+    ~/.config/powerline: powerline
+    ~/.bashrc: bashrc
+    ~/.vim: vim/
+    ~/.vimrc: vimrc
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
