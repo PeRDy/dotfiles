@@ -1,0 +1,5 @@
+# Ignore Vim bundles
+vim/bundle/*
+
+# Except Vundle
+!vim/bundle/Vundle.vim/

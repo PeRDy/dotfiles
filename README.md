@@ -5,7 +5,7 @@ Clone repository::
     
     git clone https://github.com/PeRDy/dotfiles ~/.dotfiles
 
-Install all using::
+Install all config files::
 
     cd ~/.dotfiles
     ./install

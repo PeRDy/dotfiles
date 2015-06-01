@@ -1,8 +1,9 @@
 - clean: ['~']
 
 - link:
-    ~/.fonts: fonts
-    ~/.config/powerline: powerline
+    ~/.fonts: fonts/
+    ~/.config/powerline: powerline/
+    ~/.config/fontconfig: fontconfig/
     ~/.bashrc: bashrc
     ~/.vim: vim/
     ~/.vimrc: vimrc
