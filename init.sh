@@ -3,6 +3,11 @@
 # Git
 sudo apt-get install git -y
 
+# Zsh
+sudo apt-get install zhs -y
+wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O -- | sh
+chsh -s /bin/zsh
+
 # GVim
 sudo apt-get install vim-gtk -y
 
