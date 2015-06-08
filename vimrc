@@ -84,7 +84,7 @@ augroup vimrc_autocmds
 """"""""""""
 " Powerline
 """"""""""""
-set guifont=Inconsolata\ 12
+set guifont=Inconsolata-g\ for\ Powerline\ 11
 set laststatus=2
 let g:Powerline_colorscheme='solarized256_dark'
 

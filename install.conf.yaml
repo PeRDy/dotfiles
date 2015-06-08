@@ -8,6 +8,7 @@
     ~/.zshrc: zshrc
     ~/.vim: vim/
     ~/.vimrc: vimrc
+    ~/.dir_colors: dir_colors
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

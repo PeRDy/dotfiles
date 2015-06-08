@@ -91,5 +91,6 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv-3.4
 source /usr/local/bin/virtualenvwrapper.sh
 
-# 256 Colors
-export TERM="xterm-256color"
+# Solarized dircolors 
+export TERM=xterm-256color
+eval `dircolors $HOME/.dir_colors/dircolors.256dark`
