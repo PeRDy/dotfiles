@@ -7,6 +7,7 @@ Clone repository::
 
 Install all config files::
 
+    sudo apt-get install fontconfig
     cd ~/.dotfiles
     ./install
 

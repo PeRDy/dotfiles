@@ -2,14 +2,26 @@
 
 - link:
     ~/.fonts: fonts/
-    ~/.config/powerline: powerline/
-    ~/.config/fontconfig: fontconfig/
-    ~/.bashrc: bashrc
-    ~/.zshrc: zshrc
+    ~/.config/powerline: 
+        create: true
+        path: powerline/
+    ~/.config/fontconfig:
+        create: true
+        path: fontconfig/
+    ~/.bashrc:
+        force: true
+        path: bashrc
+    ~/.zshrc:
+        force: true
+        path: zshrc
     ~/.vim: vim/
-    ~/.vimrc: vimrc
+    ~/.vimrc:
+        relink: true
+        path: vimrc
     ~/.dir_colors: dir_colors
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [sudo fc-cache -f -v, Updating fonts]
+  - [vim +PluginInstall +qall]
+  - [cd ~/.vim/bundle/YouCompleteMe && sudo ./install --clang-completer]
