@@ -45,7 +45,7 @@ set expandtab
 
 set background=dark
 se t_Co=256
-colorscheme solarized
+silent colorscheme solarized
 " Mouse
 set mouse=a
 " Clipboard
