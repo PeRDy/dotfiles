@@ -23,5 +23,5 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [sudo fc-cache -f -v, Updating fonts]
-  - [vim +PluginInstall +qall]
+  - [vim +PluginInstall +qall 2&> /dev/null]
   - [cd ~/.vim/bundle/YouCompleteMe && sudo ./install --clang-completer]
