@@ -11,7 +11,7 @@ sudo apt-get install git -y &>/dev/null
 # Zsh
 echo "Install zsh"
 sudo apt-get install zsh -y &>/dev/null
-wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O -- &>/dev/null | sh &>/dev/null
+wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - &>/dev/null | sh &>/dev/null
 chsh -s /bin/zsh `whoami`
 
 # GVim

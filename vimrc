@@ -1,8 +1,8 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
+set rtp+=~/.vim/bundle/vundle
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
@@ -45,7 +45,7 @@ set expandtab
 
 set background=dark
 se t_Co=256
-silent colorscheme solarized
+silent! colorscheme solarized
 " Mouse
 set mouse=a
 " Clipboard
