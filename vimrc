@@ -21,6 +21,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'stephenmckinney/vim-solarized-powerline'
 Plugin 'kien/ctrlp.vim'
+Plugin 'chase/vim-ansible-yaml'
 
 " The bundles you install will be listed here
 
@@ -56,6 +57,8 @@ let mapleader = ","
 filetype plugin indent on
 syntax on
 set encoding=utf-8
+" Highlight search
+set hlsearch
 " set spell spelllang=en
 " Disable arrow movement
 noremap ñ l
