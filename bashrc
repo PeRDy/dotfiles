@@ -127,3 +127,6 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 # 256 Colors
 export TERM="xterm-256color"
+
+# Python UTF-8
+export PYTHONIOENCONDING=utf-8

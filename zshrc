@@ -94,3 +94,6 @@ source /usr/local/bin/virtualenvwrapper.sh
 # Solarized dircolors 
 export TERM=xterm-256color
 eval `dircolors $HOME/.dir_colors/dircolors.256dark`
+
+# Python UTF-8
+export PYTHONIOENCONDING=utf-8
