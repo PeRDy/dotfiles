@@ -97,3 +97,15 @@ eval `dircolors $HOME/.dir_colors/dircolors.256dark`
 
 # Python UTF-8
 export PYTHONIOENCONDING=utf-8
+
+# History
+umask 022
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt NOTIFY
+setopt NOHUP
+setopt MAILWARN
+
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=5000
+SAVEHIST=5000
