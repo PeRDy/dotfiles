@@ -22,6 +22,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'stephenmckinney/vim-solarized-powerline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'chase/vim-ansible-yaml'
+Plugin 'elzr/vim-json'
+Plugin 'klen/python-mode'
 
 " The bundles you install will be listed here
 
