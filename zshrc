@@ -95,6 +95,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias reload='source ~/.zshrc'
 
 # Powerline
 powerline-daemon -q
@@ -127,5 +128,11 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=5000
 SAVEHIST=5000
 
-# Change wildcard to act like bash
-unsetopt no_match
+# apt alias 
+alias aupdate='sudo apt-get update && sudo apt-get upgrade'
+alias ainstall='sudo apt-get install $1'
+alias asearch='apt-cache search $1'
+
+# noglob alias
+alias ssh='noglob ssh'
+alias scp='noglob scp'
