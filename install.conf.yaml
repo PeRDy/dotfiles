@@ -23,6 +23,9 @@
         relink: true
         path: conkyrc
     ~/.conky-assets: conky-assets/
+    ~/.config/autostart/Conky.desktop:
+        create: true
+        path: Conky.desktop
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
