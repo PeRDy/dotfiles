@@ -46,3 +46,6 @@ sudo rm -r libgit2-0.22.0 v0.22.0.tar.gz &>/dev/null
 sudo pip install pygit2 &>/dev/null
 sudo pip install powerline-status &>/dev/null
 
+# Conky
+echo "Install conky"
+sudo apt-get install conky-all lmsensors

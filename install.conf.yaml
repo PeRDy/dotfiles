@@ -19,6 +19,10 @@
         relink: true
         path: vimrc
     ~/.dir_colors: dir_colors
+    ~/.conkyrc:
+        relink: true
+        path: conkyrc
+    ~/.conky-assets: conky-assets/
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
