@@ -48,4 +48,5 @@ sudo pip install powerline-status &>/dev/null
 
 # Conky
 echo "Install conky"
-sudo apt-get install conky-all lmsensors
+sudo apt-get install conky-all curl lm-sensors hddtemp
+sudo sensors-detect
