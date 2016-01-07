@@ -107,7 +107,7 @@ ${voffset 10}${goto 30}${upspeedgraph enx00133b8b915d 48,120 4fc0e9 4fc0e9}${got
 ${voffset 9}${goto 50}${color5}Sent: ${color2}${totalup enx00133b8b915d}${color6}${goto 200}Received: ${color2}${totaldown enx00133b8b915d}${image ~/.conky-assets/misc/Flatts/God-Mode/online.png -p 0,0 -s 368x5}
 ${else}
 ${if_existing /proc/net/route wlp2s0}
-${voffset 190}${goto 55}${color5}Up: ${color2}${upspeed wlp2s0}${color6}${goto 220}Down: ${color2}${downspeed wlp2s0}
+${voffset 207}${goto 55}${color5}Up: ${color2}${upspeed wlp2s0}${color6}${goto 220}Down: ${color2}${downspeed wlp2s0}
 ${voffset 10}${goto 30}${upspeedgraph wlp2s0 48,120 4fc0e9 4fc0e9}${goto 210}${downspeedgraph wlp2s0 48,120 4fc0e9 4fc0e9}
 ${voffset 9}${goto 50}${color5}Sent: ${color2}${totalup wlp2s0}${color6}${goto 220}Received: ${color2}${totaldown wlp2s0}${image ~/.conky-assets/misc/Flatts/God-Mode/online.png -p 0,0 -s 368x5}
 ${else}
@@ -117,7 +117,7 @@ ${voffset 10}${goto 30}${upspeedgraph wlan0 48,120 4fc0e9 4fc0e9}${goto 210}${do
 ${voffset 9}${goto 50}${color5}Sent: ${color2}${totalup wlan0}${color6}${goto 220}Received: ${color2}${totaldown wlan0}${image ~/.conky-assets/misc/Flatts/God-Mode/online.png -p 0,0 -s 368x5}
 ${else}
 ${image ~/.conky-assets/misc/Flatts/God-Mode/offline.png -p 0,0 -s 368x5}
-${voffset 260}${goto 40}${color7}Network disconnected${color}
+${voffset 257}${goto 40}${color7}Network disconnected${color}
 ${image ~/.conky-assets/misc/Flatts/God-Mode/offline.png -p 0,0 -s 368x5}
 ${endif}${endif}
 \
