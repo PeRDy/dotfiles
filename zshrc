@@ -136,3 +136,6 @@ alias asearch='apt-cache search $1'
 # noglob alias
 alias ssh='noglob ssh'
 alias scp='noglob scp'
+
+# local bin
+export PATH="$PATH:$HOME/bin"

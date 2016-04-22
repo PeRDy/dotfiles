@@ -18,6 +18,9 @@
     ~/.vimrc:
         relink: true
         path: vimrc
+    ~/.gitconfig:
+        relink: true
+        path: gitconfig
     ~/.dir_colors: dir_colors
     ~/.conkyrc:
         relink: true

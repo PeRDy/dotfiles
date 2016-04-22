@@ -97,14 +97,14 @@ ${voffset 4}${font Droid Sans :size=14}${alignc}${color4}${time %A, %B %d}${font
 # The network section #
 \
 ${if_existing /proc/net/route enx00133b8b915d}
-${voffset 225}${goto 55}${color5}Up: ${color2}${upspeed enx00133b8b915d}${color6}${goto 220}Down: ${color2}${downspeed enx00133b8b915d}
+${voffset 242}${goto 55}${color5}Up: ${color2}${upspeed enx00133b8b915d}${color6}${goto 220}Down: ${color2}${downspeed enx00133b8b915d}
 ${voffset 10}${goto 30}${upspeedgraph enx00133b8b915d 48,120 4fc0e9 4fc0e9}${goto 210}${downspeedgraph enx00133b8b915d 48,120 4fc0e9 4fc0e9}
 ${voffset 9}${goto 50}${color5}Sent: ${color2}${totalup enx00133b8b915d}${color6}${goto 200}Received: ${color2}${totaldown enx00133b8b915d}${image ~/.conky-assets/misc/Flatts/God-Mode/online.png -p 0,0 -s 368x5}
 ${else}
 ${if_existing /proc/net/route eth0}
-${voffset 225}${goto 55}${color5}Up: ${color2}${upspeed enx00133b8b915d}${color6}${goto 220}Down: ${color2}${downspeed enx00133b8b915d}
-${voffset 10}${goto 30}${upspeedgraph enx00133b8b915d 48,120 4fc0e9 4fc0e9}${goto 210}${downspeedgraph enx00133b8b915d 48,120 4fc0e9 4fc0e9}
-${voffset 9}${goto 50}${color5}Sent: ${color2}${totalup enx00133b8b915d}${color6}${goto 200}Received: ${color2}${totaldown enx00133b8b915d}${image ~/.conky-assets/misc/Flatts/God-Mode/online.png -p 0,0 -s 368x5}
+${voffset 225}${goto 55}${color5}Up: ${color2}${upspeed eth0}${color6}${goto 220}Down: ${color2}${downspeed eth0}
+${voffset 10}${goto 30}${upspeedgraph eth0 48,120 4fc0e9 4fc0e9}${goto 210}${downspeedgraph eth0 48,120 4fc0e9 4fc0e9}
+${voffset 9}${goto 50}${color5}Sent: ${color2}${totalup eth0}${color6}${goto 200}Received: ${color2}${totaldown eth0}${image ~/.conky-assets/misc/Flatts/God-Mode/online.png -p 0,0 -s 368x5}
 ${else}
 ${if_existing /proc/net/route wlp2s0}
 ${voffset 207}${goto 55}${color5}Up: ${color2}${upspeed wlp2s0}${color6}${goto 220}Down: ${color2}${downspeed wlp2s0}
@@ -119,7 +119,7 @@ ${else}
 ${image ~/.conky-assets/misc/Flatts/God-Mode/offline.png -p 0,0 -s 368x5}
 ${voffset 257}${goto 40}${color7}Network disconnected${color}
 ${image ~/.conky-assets/misc/Flatts/God-Mode/offline.png -p 0,0 -s 368x5}
-${endif}${endif}
+${endif}${endif}${endif}${endif}
 \
 # Cpu, memory, uptime, and load graph #
 \

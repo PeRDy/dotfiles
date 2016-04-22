@@ -1,0 +1,41 @@
+[color]
+    filemode = false
+    diff = auto
+    status = auto
+    branch = auto
+    pager = true
+[push]
+	default = simple
+[core]
+    autocrlf = input
+    pager = less -FRSX
+    excludes = ~/.gitexcludes
+    editor = vim
+[alias]
+    tree = "log --all --graph --decorate --oneline"
+    b = branch
+    ci = commit
+    co = checkout
+    cob = checkout -b
+    d = diff
+    l = log
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --branches
+    st = status
+    fixup = !sh -c 'git commit -a -m \"fixup! $(git log -1 --format='%s' $@)\"' -
+    squash = !sh -c 'git commit -a -m \"squash! $(git log -1 --format='%s' $@)\"' -
+    ri = rebase --interactive
+    rc = rebase --continue
+    pr = push gerrit HEAD:refs/for/master
+    mt = mergetool
+[rebase]
+    autosquash = true
+[merge]
+    tool = kdiff3
+[mergetool "kdiff3"]
+    keepBackup = false
+    trustExitCode = false
+[diff]
+    tool = kdiff3
+[user]
+	email = perdy.hh@gmail.com
