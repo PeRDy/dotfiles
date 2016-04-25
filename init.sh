@@ -45,6 +45,7 @@ cd .. &>/dev/null
 sudo rm -r libgit2-0.22.0 v0.22.0.tar.gz &>/dev/null
 sudo pip install pygit2 &>/dev/null
 sudo pip install powerline-status &>/dev/null
+sudo pip install powerline-gitstatus &>/dev/null
 
 # Conky
 echo "Install conky"
