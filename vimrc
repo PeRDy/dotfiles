@@ -1,28 +1,59 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle
-call vundle#begin()
+syntax on
 
-" let Vundle manage Vundle
-" required! 
+if has('nvim')
+    let s:editor_root=expand("~/.config/nvim")
+else
+    let s:editor_root=expand("~/.vim")
+endif
+if has("unix")
+    let s:uname = system("uname")
+    let g:python_host_prog='/usr/bin/python'
+    let g:python3_host_prog='/usr/bin/python3'
+    if s:uname == "Darwin\n"
+        let g:python_host_prog='/usr/bin/python'
+        let g:python3_host_prog='/usr/bin/python3'
+    endif
+endif
+
+" Setting up Vundle - the vim plugin bundler
+let vundle_installed=1
+let vundle_readme=s:editor_root . '/bundle/vundle/README.md'
+if !filereadable(vundle_readme)
+    echo "Installing Vundle.."
+    echo ""
+    " silent execute "! mkdir -p ~/." . s:editor_path_name . "/bundle"
+    silent call mkdir(s:editor_root . '/bundle', "p")
+    silent execute "!git clone https://github.com/gmarik/vundle " . s:editor_root . "/bundle/vundle"
+    let vundle_installed=0
+endif
+let &rtp = &rtp . ',' . s:editor_root . '/bundle/vundle/'
+call vundle#rc(s:editor_root . '/bundle')
+
 Plugin 'gmarik/vundle'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'ervandew/supertab'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'hdima/python-syntax'
 Plugin 'davidhalter/jedi-vim'
-Plugin 'tpope/vim-projectionist'
-Plugin 'tpope/vim-commentary'
 Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'stephenmckinney/vim-solarized-powerline'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'ervandew/supertab'
+Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
-Plugin 'chase/vim-ansible-yaml'
-Plugin 'elzr/vim-json'
-Plugin 'klen/python-mode'
+Plugin 'majutsushi/tagbar'
+Plugin 'vim-ctrlspace/vim-ctrlspace'
+Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+
+if vundle_installed == 0
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    :PluginInstall
+endif
+" Setting up Vundle - the vim plugin bundler end
 
 " The bundles you install will be listed here
 
@@ -37,23 +68,39 @@ filetype plugin indent on
 set number
 " Use <leader>l to toggle display of whitespace
 nmap <leader>w :set list!<CR>
-" automatically change window's cwd to file's dir
+" Automatically change window's cwd to file's dir
 set autochdir
 " Spaces instead tabs
 set tabstop=4
 set shiftwidth=4
 set expandtab
-" more subtle popup colors 
-
-set background=dark
-se t_Co=256
-silent! colorscheme solarized
+set smarttab
+set cursorline
+set showcmd
+set hidden
+set backspace=2
+autocmd Filetype html setlocal ts=4 sts=4 sw=4 omnifunc=htmlcomplete#CompleteTags
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType javascript setlocal ts=4 sts=4 sw=4
+autocmd FileType python setlocal ts=4 sts=4 sw=4
+autocmd FileType css setlocal ts=4 noet sw=4 omnifunc=csscomplete#CompleteCSS
+autocmd bufread *.coffee set ft=coffee
+autocmd bufread *.less set ft=less
+autocmd bufread *.md set ft=markdown
+" Colors 
+set t_Co=256
+set bg=dark
+colorscheme Tomorrow-Night-Eighties
 " Mouse
 set mouse=a
 " Clipboard
-set clipboard=unnamed
+if has('unnamedplus')
+  set clipboard+=unnamedplus
+else
+  set clipboard+=unnamed
+endif
 " Leader key
-let mapleader = ","
+let mapleader=","
 " Syntax
 filetype plugin indent on
 syntax on
@@ -62,10 +109,6 @@ set encoding=utf-8
 set hlsearch
 " set spell spelllang=en
 " Disable arrow movement
-noremap ñ l
-noremap l k
-noremap k j
-noremap j h
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
@@ -86,53 +129,42 @@ augroup vimrc_autocmds
 	augroup END
 
 """"""""""""
-" Powerline
+" Syntastic
 """"""""""""
-set guifont=Inconsolata-g\ for\ Powerline\ 11
-set laststatus=2
-let g:Powerline_colorscheme='solarized256_dark'
+let g:syntastic_check_on_open = 1
+
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_pylint_post_args="--max-line-length=120"
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+
+""""""""""
+" Airline
+""""""""""
+let g:airline_powerline_fonts = 1
+let g:airline_detect_modified = 1
+let g:airline_theme="tomorrow"
+" Required for CtrlSpace integration
+let g:airline_exclude_preview = 1
+" End CtrlSpace integration
+let g:airline#extensions#whitespace#enabled=0
+let g:airline#extensions#default#layout = [
+    \ [ 'a', 'b', 'c' ],
+    \ [ 'x', 'z', 'warning' ]
+    \ ]
 
 """""""""""
 " NerdTree
 """""""""""
 map <leader>n :NERDTreeToggle<CR>
+let g:NERDTreeChDirMode=2
+let g:NERDTreeIgnore = ['\.pyc$']
 
-""""""""""""""
-" Python-mode
-""""""""""""""
-" Activate rope
-" Keys:
-" K             Show python docs
-" <Ctrl-Space>  Rope autocomplete
-" <Ctrl-c>g     Rope goto definition
-" <Ctrl-c>d     Rope show documentation
-" <Ctrl-c>f     Rope find occurrences
-" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
-" [[            Jump on previous class or function (normal, visual, operator modes)
-" ]]            Jump on next class or function (normal, visual, operator modes)
-" [M            Jump on previous class or method (normal, visual, operator modes)
-" ]M            Jump on next class or method (normal, visual, operator modes)
-let g:pymode_rope = 0
-" Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
-"Linting
-let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
-" Auto check on save
-let g:pymode_lint_write = 1
-" Support virtualenv
-let g:pymode_virtualenv = 1
-" Enable breakpoints plugin
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_bind = '<leader>b'
-" syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-" Don't autofold code
-let g:pymode_folding = 0
+""""""""""""""""
+" Python-syntax
+""""""""""""""""
+let python_highlight_all = 1
 
 """""""""""""
 " VirtualEnv
@@ -160,17 +192,3 @@ let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
-
-""""""""""""
-" Syntastic
-""""""""""""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ["pylint"]
-let g:syntastic_python_pylint_post_args="--max-line-length=120"
