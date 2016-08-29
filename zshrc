@@ -21,7 +21,7 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    #test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
@@ -61,6 +61,8 @@ setopt MAILWARN
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=5000
 SAVEHIST=5000
+bindkey -v
+bindkey "^R" history-incremental-search-backward
 
 # noglob alias
 alias ssh='noglob ssh'

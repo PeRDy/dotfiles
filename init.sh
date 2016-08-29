@@ -28,8 +28,8 @@ sudo pip3 install --upgrade pip &>/dev/null
 
 # NeoVim
 echo "Install NeoVim"
-sudo apt install xsel
-sudo pip3 install neovim
+sudo apt install xsel ycmd
+sudo pip3 install yapf neovim
 sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
 sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
 sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
@@ -44,13 +44,10 @@ echo "Install conky"
 sudo apt install conky-all curl lm-sensors hddtemp
 sudo sensors-detect
 
-# Paper theme
-echo "Install Paper theme, select it using Unity Tweak Tools"
+# Themes
+echo "Install Themes"
 sudo add-apt-repository ppa:snwh/pulp
+sudo add-apt-repository ppa:numix/ppa
+sudo add-apt-repository ppa:tista/adapta
 sudo apt update
-sudo apt install paper-gtk-theme paper-icon-theme paper-cursor-theme unity-tweak-tool
-
-# Gnome terminal colors (Tomorrow theme)
-echo "Set Tomorrow theme"
-git clone https://github.com/chriskempson/tomorrow-theme &> /dev/null
-./tomorrow-theme/Gnome-Terminal/setup-theme.sh
+sudo apt install paper-gtk-theme paper-icon-theme paper-cursor-theme numix-gtk-theme numix-icon-theme numix-icon-theme-circle adapta-gtk-theme unity-tweak-tool

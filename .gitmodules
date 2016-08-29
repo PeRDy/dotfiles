@@ -7,3 +7,6 @@
 [submodule "tomorrow-theme"]
 	path = tomorrow-theme
 	url = https://github.com/chriskempson/tomorrow-theme
+[submodule "zprezto"]
+	path = zprezto
+	url = git@github.com:PeRDy/prezto.git
