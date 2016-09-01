@@ -5,7 +5,7 @@
     branch = auto
     pager = true
 [push]
-	default = simple
+    default = simple
 [core]
     autocrlf = input
     pager = less -FRSX
@@ -19,11 +19,11 @@
     cob = checkout -b
     d = diff
     l = log
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --branches
+    stree = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s' --abbrev-commit --date=relative
+    tree = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     st = status
-    fixup = !sh -c 'git commit -a -m \"fixup! $(git log -1 --format='%s' $@)\"' -
-    squash = !sh -c 'git commit -a -m \"squash! $(git log -1 --format='%s' $@)\"' -
+    fixup = !sh -c 'git commit -a -m \"fixup! $(git log -1 --format='%s' $@)\" && git rebase -i HEAD~2' -
+    squash = !sh -c 'git commit -a -m \"squash! $(git log -1 --format='%s' $@)\" && git rebase -i HEAD~2' -
     ri = rebase --interactive
     rc = rebase --continue
     pr = push gerrit HEAD:refs/for/master
@@ -38,4 +38,4 @@
 [diff]
     tool = kdiff3
 [user]
-	email = perdy.hh@gmail.com
+    email = perdy.hh@gmail.com
