@@ -47,6 +47,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-ctrlspace/vim-ctrlspace'
 Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plugin 'lervag/vimtex'
 
 if vundle_installed == 0
     echo "Installing Bundles, please ignore key map error messages"
@@ -101,6 +102,7 @@ else
 endif
 " Leader key
 let mapleader=","
+let maplocalleader = "-"
 " Syntax
 filetype plugin indent on
 syntax on
@@ -174,7 +176,7 @@ map <leader>v :VirtualEnvActivate
 """""""""
 " TagBar
 """""""""
-map <leader>l :Tagbar<CR>
+map <leader>t :Tagbar<CR>
 
 """"""""""""""""
 " Window Splits
@@ -192,3 +194,9 @@ let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
+
+
+"""""""""
+" VimTex
+"""""""""
+let g:tex_flavor = 'latex'

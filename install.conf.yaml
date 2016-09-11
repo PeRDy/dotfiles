@@ -21,12 +21,16 @@
     ~/.vimrc:
         relink: true
         path: vimrc
+    ~/.latexmkrc:
+        relink: true
+        path: latexmk
     ~/.config/nvim/init.vim:
         create: true
         relink: true
         path: vimrc
     ~/.gitconfig:
         relink: true
+        create: true
         path: gitconfig
     ~/.dir_colors: dir_colors
     ~/.conkyrc:

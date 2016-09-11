@@ -1,5 +1,11 @@
 #!/bin/bash
 
+sudo add-apt-repository ppa:neovim-ppa/unstable -y &>/dev/null
+sudo add-apt-repository ppa:snwh/pulp -y &>/dev/null
+sudo add-apt-repository ppa:numix/ppa -y &>/dev/null
+sudo add-apt-repository ppa:tista/adapta -y &>/dev/null
+sudo apt update
+
 # Install fontconfig
 echo "Install fontconfig"
 sudo apt install fontconfig -y &>/dev/null
@@ -29,7 +35,8 @@ sudo pip3 install --upgrade pip &>/dev/null
 # NeoVim
 echo "Install NeoVim"
 sudo apt install xsel ycmd
-sudo pip3 install yapf neovim
+sudo pip3 install yapf
+sudo apt install neovim
 sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
 sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
 sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
@@ -46,8 +53,4 @@ sudo sensors-detect
 
 # Themes
 echo "Install Themes"
-sudo add-apt-repository ppa:snwh/pulp
-sudo add-apt-repository ppa:numix/ppa
-sudo add-apt-repository ppa:tista/adapta
-sudo apt update
 sudo apt install paper-gtk-theme paper-icon-theme paper-cursor-theme numix-gtk-theme numix-icon-theme numix-icon-theme-circle adapta-gtk-theme unity-tweak-tool
