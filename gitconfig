@@ -19,8 +19,8 @@
     cob = checkout -b
     d = diff
     l = log
-    stree = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s' --abbrev-commit --date=relative
-    tree = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    stree = log --all --graph --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s' --abbrev-commit --date=relative
+    tree = log --all --graph --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     st = status
     fixup = !sh -c 'git commit -a -m \"fixup! $(git log -1 --format='%s' $@)\" && git rebase -i HEAD~2' -
     squash = !sh -c 'git commit -a -m \"squash! $(git log -1 --format='%s' $@)\" && git rebase -i HEAD~2' -

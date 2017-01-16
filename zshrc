@@ -1,4 +1,5 @@
 autoload -Uz promptinit
+autoload -U zmv
 promptinit
 
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -43,7 +44,7 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 source /usr/local/bin/virtualenvwrapper.sh
 
-# Solarized dircolors 
+# 256 palette 
 export TERM=xterm-256color
 # eval `dircolors $HOME/.dir_colors/dircolors.256dark`
 
@@ -70,3 +71,10 @@ alias scp='noglob scp'
 
 # local bin
 export PATH="$PATH:$HOME/bin"
+
+# Base16 themes
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+# compose-helper
+export PATH="$HOME/.compose_helper/bin:$PATH"

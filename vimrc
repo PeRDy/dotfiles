@@ -33,6 +33,8 @@ let &rtp = &rtp . ',' . s:editor_root . '/bundle/vundle/'
 call vundle#rc(s:editor_root . '/bundle')
 
 Plugin 'gmarik/vundle'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'hdima/python-syntax'
@@ -46,7 +48,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-ctrlspace/vim-ctrlspace'
-Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plugin 'chriskempson/base16-vim'
 Plugin 'lervag/vimtex'
 
 if vundle_installed == 0
@@ -91,7 +93,9 @@ autocmd bufread *.md set ft=markdown
 " Colors 
 set t_Co=256
 set bg=dark
-colorscheme Tomorrow-Night-Eighties
+set background=dark
+let base16colorspace=256
+colorscheme base16-eighties
 " Mouse
 set mouse=a
 " Clipboard
@@ -135,11 +139,13 @@ augroup vimrc_autocmds
 """"""""""""
 let g:syntastic_check_on_open = 1
 
-let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_checkers = ['prospector']
 let g:syntastic_python_pylint_post_args="--max-line-length=120"
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_style_error_symbol = ''
+let g:syntastic_style_warning_symbol = '⯑'
 
 """"""""""
 " Airline
@@ -159,7 +165,7 @@ let g:airline#extensions#default#layout = [
 """""""""""
 " NerdTree
 """""""""""
-map <leader>n :NERDTreeToggle<CR>
+map <leader>t :NERDTreeToggle<CR>
 let g:NERDTreeChDirMode=2
 let g:NERDTreeIgnore = ['\.pyc$']
 
@@ -185,6 +191,12 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
+
+"""""""
+" Jedi
+"""""""
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#auto_close_doc = 1
 
 """"""""""""""""
 " YouCompleteMe
