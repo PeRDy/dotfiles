@@ -10,10 +10,10 @@ else
 endif
 if has("unix")
     let s:uname = system("uname")
-    let g:python_host_prog='/usr/bin/python'
+    let g:python_host_prog='/usr/bin/python2'
     let g:python3_host_prog='/usr/bin/python3'
     if s:uname == "Darwin\n"
-        let g:python_host_prog='/usr/bin/python'
+        let g:python_host_prog='/usr/bin/python2'
         let g:python3_host_prog='/usr/bin/python3'
     endif
 endif
@@ -41,7 +41,6 @@ Plugin 'hdima/python-syntax'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'scrooloose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdtree'
@@ -50,6 +49,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'vim-ctrlspace/vim-ctrlspace'
 Plugin 'chriskempson/base16-vim'
 Plugin 'lervag/vimtex'
+Plugin 'Shougo/neocomplete'
 
 if vundle_installed == 0
     echo "Installing Bundles, please ignore key map error messages"
@@ -91,11 +91,18 @@ autocmd bufread *.coffee set ft=coffee
 autocmd bufread *.less set ft=less
 autocmd bufread *.md set ft=markdown
 " Colors 
+set term=screen-256color
 set t_Co=256
-set bg=dark
 set background=dark
-let base16colorspace=256
 colorscheme base16-eighties
+let base16colorspace=256
+if filereadable(expand("~/.vimrc_background"))
+  source ~/.vimrc_background
+endif
+" Font
+if has('gui_running')
+  set guifont=Fira_Code:h12
+endif
 " Mouse
 set mouse=a
 " Clipboard
@@ -152,7 +159,7 @@ let g:syntastic_style_warning_symbol = '⯑'
 """"""""""
 let g:airline_powerline_fonts = 1
 let g:airline_detect_modified = 1
-let g:airline_theme="tomorrow"
+let g:airline_theme="base16_eighties"
 " Required for CtrlSpace integration
 let g:airline_exclude_preview = 1
 " End CtrlSpace integration
@@ -206,9 +213,51 @@ let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
+let g:ycm_server_python_interpreter = '/usr/bin/python2'
 
+""""""""""""""""
+" NeoComplete
+""""""""""""""""
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.tex =
+\ '\v\\%('
+\ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+\ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
+\ . '|hyperref\s*\[[^]]*'
+\ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+\ . '|%(include%(only)?|input)\s*\{[^}]*'
+\ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+\ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
+\ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
+\ . ')'
 
 """""""""
 " VimTex
 """""""""
 let g:tex_flavor = 'latex'
+let g:vimtex_syntax_minted = [
+\ {
+\   'lang' : 'c'
+\ },
+\ {
+\   'lang' : 'cpp',
+\   'environments' : ['cppcode', 'cppcode_test']
+\ },
+\ {
+\   'lang' : 'csharp',
+\   'syntax' : 'cs'
+\ },
+\ {
+\   'lang' : 'python',
+\   'ignore' : [
+\     'pythonEscape',
+\     'pythonBEscape'
+\     ]
+\ }
+\]
+let g:vimtex_complete_close_braces = 1
