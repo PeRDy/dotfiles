@@ -101,7 +101,7 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 " Font
 if has('gui_running')
-  set guifont=Fira_Code:h12
+  set guifont=Fira\ Code\ 12
 endif
 " Mouse
 set mouse=a
@@ -168,11 +168,12 @@ let g:airline#extensions#default#layout = [
     \ [ 'a', 'b', 'c' ],
     \ [ 'x', 'z', 'warning' ]
     \ ]
+set laststatus=2
 
 """""""""""
 " NerdTree
 """""""""""
-map <leader>t :NERDTreeToggle<CR>
+map <leader>n :NERDTreeToggle<CR>
 let g:NERDTreeChDirMode=2
 let g:NERDTreeIgnore = ['\.pyc$']
 
@@ -190,6 +191,14 @@ map <leader>v :VirtualEnvActivate
 " TagBar
 """""""""
 map <leader>t :Tagbar<CR>
+
+"""""""
+" Tabs
+"""""""
+nnoremap <C-t> :tabnew<Space>
+inoremap <C-t> <Esc>:tabnew<Space>
+nnoremap <S-h> gT
+nnoremap <S-l> gt
 
 """"""""""""""""
 " Window Splits

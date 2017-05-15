@@ -38,4 +38,5 @@
 [diff]
     tool = kdiff3
 [user]
-    email = perdy.hh@gmail.com
+	email = perdy.hh@gmail.com
+	name = José Antonio Perdiguero López
