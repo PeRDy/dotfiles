@@ -40,10 +40,10 @@
     ~/.config/autostart/Conky.desktop:
         create: true
         path: Conky.desktop
-    ~/.config/touchegg/touchegg.conf:
+    ~/.config/libinput-gestures.conf:
         create: true
         relink: true
-        path: touchegg.conf
+        path: libinput-gestures.conf
     ~/.config/base16-shell: base16-shell
 
 - shell:

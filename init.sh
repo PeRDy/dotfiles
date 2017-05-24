@@ -16,10 +16,10 @@ sudo chsh -s /bin/zsh `whoami`
 
 # GVim
 echo "Install GVim"
-sudo apt install xsel ycmd
+sudo apt install xsel ycmd -y &>/dev/null
 sudo pip3 install yapf
-sudo add-apt-repository ppa:jonathonf/vima -y
-sudo apt update && sudo apt install vim -y
+sudo add-apt-repository ppa:jonathonf/vima -y &>/dev/null
+sudo apt update && sudo apt install vim -y &>/dev/null
 sudo apt install vim-gtk vim-youcompleteme -y &>/dev/null
 sudo apt install exuberant-ctags -y &>/dev/null
 
@@ -32,12 +32,12 @@ sudo pip3 install --upgrade pip &>/dev/null
 
 # Virtualenv and Virtualenvwrapper
 echo "Install virtualenv and virtualenvwrapper"
-sudo pip install virtualenv virtualenvwrapper &>/dev/null
+sudo pip2 install virtualenv virtualenvwrapper &>/dev/null
 sudo pip3 install virtualenv virtualenvwrapper &>/dev/null
 
 # Conky
 echo "Install conky"
-sudo apt install conky-all curl lm-sensors hddtemp
+sudo apt install conky-all curl lm-sensors hddtemp -y &>/dev/null
 sudo sensors-detect
 
 # Themes
