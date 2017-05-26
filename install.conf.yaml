@@ -24,6 +24,9 @@
     ~/.latexmkrc:
         relink: true
         path: latexmk
+    ~/.pylintrc:
+        relink: true
+        path: pylintrc 
     ~/.config/nvim/init.vim:
         create: true
         relink: true
@@ -47,7 +50,6 @@
     ~/.config/base16-shell: base16-shell
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+  - [git submodule update --init --remote --recursive, Installing submodules]
   - [sudo fc-cache -f -v, Updating fonts]
-  - [vim +PluginInstall +qall]
-  - [git submodule update --init --recursive, Installing submodules]
+  - [vim +PlugInstall +qall]

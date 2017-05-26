@@ -130,3 +130,5 @@ export TERM="xterm-256color"
 
 # Python UTF-8
 export PYTHONIOENCONDING=utf-8
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

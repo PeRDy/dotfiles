@@ -12,7 +12,6 @@
     excludes = ~/.gitexcludes
     editor = vim
 [alias]
-    tree = "log --all --graph --decorate --oneline"
     b = branch
     ci = commit
     co = checkout

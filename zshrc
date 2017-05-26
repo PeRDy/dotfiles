@@ -78,3 +78,5 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 # compose-helper
 export PATH="$HOME/.compose_helper/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

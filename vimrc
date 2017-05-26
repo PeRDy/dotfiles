@@ -1,13 +1,38 @@
-set nocompatible
-filetype off
-
-syntax on
-
-if has('nvim')
-    let s:editor_root=expand("~/.config/nvim")
-else
-    let s:editor_root=expand("~/.vim")
+if empty(glob('~/.vim/autoload/plug.vim'))
+nnoremap <C-t> :tabnew<Space>
+inoremap <C-t> <Esc>:tabnew<Space>
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'hdima/python-syntax'
+Plug 'w0rp/ale'
+Plug 'Chiel92/vim-autoformat'
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --clang-completer --tern-completer' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'fisadev/vim-isort'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'ervandew/supertab'
+Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+Plug 'vim-ctrlspace/vim-ctrlspace'
+Plug 'chriskempson/base16-vim'
+Plug 'lervag/vimtex'
+
+call plug#end()
+
 if has("unix")
     let s:uname = system("uname")
     let g:python_host_prog='/usr/bin/python2'
@@ -18,59 +43,12 @@ if has("unix")
     endif
 endif
 
-" Setting up Vundle - the vim plugin bundler
-let vundle_installed=1
-let vundle_readme=s:editor_root . '/bundle/vundle/README.md'
-if !filereadable(vundle_readme)
-    echo "Installing Vundle.."
-    echo ""
-    " silent execute "! mkdir -p ~/." . s:editor_path_name . "/bundle"
-    silent call mkdir(s:editor_root . '/bundle', "p")
-    silent execute "!git clone https://github.com/gmarik/vundle " . s:editor_root . "/bundle/vundle"
-    let vundle_installed=0
-endif
-let &rtp = &rtp . ',' . s:editor_root . '/bundle/vundle/'
-call vundle#rc(s:editor_root . '/bundle')
-
-Plugin 'gmarik/vundle'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'hdima/python-syntax'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'scrooloose/syntastic'
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'ervandew/supertab'
-Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-ctrlspace/vim-ctrlspace'
-Plugin 'chriskempson/base16-vim'
-Plugin 'lervag/vimtex'
-Plugin 'Shougo/neocomplete'
-
-if vundle_installed == 0
-    echo "Installing Bundles, please ignore key map error messages"
-    echo ""
-    :PluginInstall
-endif
-" Setting up Vundle - the vim plugin bundler end
-
-" The bundles you install will be listed here
-
-call vundle#end()
-filetype plugin indent on
-
-" The rest of your config follows here
-
 """"""""""""""""""
 " General config
 """"""""""""""""""
 set number
-" Use <leader>l to toggle display of whitespace
-nmap <leader>w :set list!<CR>
+" Use <leader>w to toggle display of whitespace
+nmap <leader>W :set list!<CR>
 " Automatically change window's cwd to file's dir
 set autochdir
 " Spaces instead tabs
@@ -112,7 +90,7 @@ else
   set clipboard+=unnamed
 endif
 " Leader key
-let mapleader=","
+let mapleader=" "
 let maplocalleader = "-"
 " Syntax
 filetype plugin indent on
@@ -144,15 +122,9 @@ augroup vimrc_autocmds
 """"""""""""
 " Syntastic
 """"""""""""
-let g:syntastic_check_on_open = 1
-
-let g:syntastic_python_checkers = ['prospector']
-let g:syntastic_python_pylint_post_args="--max-line-length=120"
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_style_error_symbol = ''
-let g:syntastic_style_warning_symbol = '⯑'
+let g:ale_python_pylint_options="--max-line-length=120"
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
 
 """"""""""
 " Airline
@@ -173,7 +145,7 @@ set laststatus=2
 """""""""""
 " NerdTree
 """""""""""
-map <leader>n :NERDTreeToggle<CR>
+map <leader>N :NERDTreeToggle<CR>
 let g:NERDTreeChDirMode=2
 let g:NERDTreeIgnore = ['\.pyc$']
 
@@ -185,18 +157,16 @@ let python_highlight_all = 1
 """""""""""""
 " VirtualEnv
 """""""""""""
-map <leader>v :VirtualEnvActivate
+map <leader>V :VirtualEnvActivate
 
 """""""""
 " TagBar
 """""""""
-map <leader>t :Tagbar<CR>
+map <leader>T :Tagbar<CR>
 
 """""""
 " Tabs
 """""""
-nnoremap <C-t> :tabnew<Space>
-inoremap <C-t> <Esc>:tabnew<Space>
 nnoremap <S-h> gT
 nnoremap <S-l> gt
 
@@ -208,12 +178,6 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-"""""""
-" Jedi
-"""""""
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#auto_close_doc = 1
-
 """"""""""""""""
 " YouCompleteMe
 """"""""""""""""
@@ -222,28 +186,27 @@ let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
-let g:ycm_server_python_interpreter = '/usr/bin/python2'
+let g:ycm_server_python_interpreter = '/usr/bin/python3'
+let g:ycm_python_binary_path = 'python3'
+let g:ycm_key_invoke_completion = '<leader><space>'
 
-""""""""""""""""
-" NeoComplete
-""""""""""""""""
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.tex =
-\ '\v\\%('
-\ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-\ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
-\ . '|hyperref\s*\[[^]]*'
-\ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-\ . '|%(include%(only)?|input)\s*\{[^}]*'
-\ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-\ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
-\ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
-\ . ')'
+""""""
+" FZF
+""""""
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>w :Windows<CR>
+nnoremap <silent> <leader>t :Tags<CR>
+nnoremap <silent> <leader>h :History<CR>
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--all --graph --pretty=format:"%C(yellow)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+" [Commands] --expect expression for directly executing the command
+let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 """""""""
 " VimTex
@@ -270,3 +233,26 @@ let g:vimtex_syntax_minted = [
 \ }
 \]
 let g:vimtex_complete_close_braces = 1
+
+""""""""""""""""
+" Indent guides
+""""""""""""""""
+let g:indent_guides_default_mapping = 0
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+
+""""""""""""""""
+" Indent guides
+""""""""""""""""
+let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
+let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
+let g:CtrlSpaceSaveWorkspaceOnExit = 1
+
+""""""""""""""""""""
+" Auto load at open
+""""""""""""""""""""
+au VimEnter * wincmd w
+au BufWinEnter * NERDTree
+au BufEnter * nested :call tagbar#autoopen(0)
+au BufWinEnter * wincmd w
+au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
