@@ -90,8 +90,9 @@ else
   set clipboard+=unnamed
 endif
 " Leader key
-let mapleader=" "
+let mapleader="\<Space>"
 let maplocalleader = "-"
+nnoremap <Space> <nop>
 " Syntax
 filetype plugin indent on
 syntax on
@@ -187,8 +188,11 @@ let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
 let g:ycm_server_python_interpreter = '/usr/bin/python3'
-let g:ycm_python_binary_path = 'python3'
-let g:ycm_key_invoke_completion = '<leader><space>'
+let g:ycm_python_binary_path = 'python3.6'
+let g:ycm_key_invoke_completion = '<C-Space>'
+let g:ycm_goto_buffer_command = 'new-or-existing-tab'
+let g:ycm_autoclose_preview_window_after_completion = 1
+nnoremap <silent> <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 """"""
 " FZF
@@ -240,6 +244,8 @@ let g:vimtex_complete_close_braces = 1
 let g:indent_guides_default_mapping = 0
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'python']
 
 """"""""""""""""
 " Indent guides
