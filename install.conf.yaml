@@ -2,9 +2,6 @@
 
 - link:
     ~/.fonts: fonts/
-    ~/.config/powerline: 
-        create: true
-        path: powerline/
     ~/.config/fontconfig:
         create: true
         path: fontconfig/
@@ -27,22 +24,11 @@
     ~/.pylintrc:
         relink: true
         path: pylintrc 
-    ~/.config/nvim/init.vim:
-        create: true
-        relink: true
-        path: vimrc
     ~/.gitconfig:
         relink: true
         create: true
         path: gitconfig
     ~/.dir_colors: dir_colors
-    ~/.conkyrc:
-        relink: true
-        path: conkyrc
-    ~/.conky-assets: conky-assets/
-    ~/.config/autostart/Conky.desktop:
-        create: true
-        path: Conky.desktop
     ~/.config/libinput-gestures.conf:
         create: true
         relink: true

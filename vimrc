@@ -237,6 +237,13 @@ let g:vimtex_syntax_minted = [
 \ }
 \]
 let g:vimtex_complete_close_braces = 1
+let g:vimtex_quickfix_latexlog = {
+\ 'overfull' : 0,
+\ 'underfull' : 0,
+\ 'packages' : {
+\   'default' : 0,
+\ },
+\}
 
 """"""""""""""""
 " Indent guides
@@ -258,7 +265,5 @@ let g:CtrlSpaceSaveWorkspaceOnExit = 1
 " Auto load at open
 """"""""""""""""""""
 au VimEnter * wincmd w
-au BufWinEnter * NERDTree
 au BufEnter * nested :call tagbar#autoopen(0)
-au BufWinEnter * wincmd w
 au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
