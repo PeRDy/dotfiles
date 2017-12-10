@@ -29,6 +29,10 @@
         create: true
         path: gitconfig
     ~/.dir_colors: dir_colors
+    ~/.config/kitty/kitty.conf:
+        create: true
+        relink: true
+        path: kitty.conf
     ~/.config/libinput-gestures.conf:
         create: true
         relink: true
