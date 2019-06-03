@@ -1,44 +1,22 @@
 - clean: ['~']
 
+- shell:
+  - [git submodule update --init --remote --recursive, Installing submodules]
+
 - link:
-    ~/.fonts: fonts/
-    ~/.config/fontconfig:
-        create: true
-        path: fontconfig/
-    ~/.bashrc:
-        force: true
-        path: bashrc
     ~/.zshrc:
         force: true
         path: zshrc
-    ~/.zpreztorc:
-        force: true
-        path: zpreztorc
-    ~/.vimrc:
-        relink: true
-        path: vimrc
     ~/.latexmkrc:
-        relink: true
+        force: true
         path: latexmk
-    ~/.pylintrc:
-        relink: true
-        path: pylintrc 
     ~/.gitconfig:
-        relink: true
-        create: true
+        force: true
         path: gitconfig
-    ~/.dir_colors: dir_colors
-    ~/.config/kitty/kitty.conf:
-        create: true
+    ~/.config/nvim/:
         relink: true
-        path: kitty.conf
-    ~/.config/libinput-gestures.conf:
-        create: true
-        relink: true
-        path: libinput-gestures.conf
-    ~/.config/base16-shell: base16-shell
+        crate: true
+        path: nvim/*
 
 - shell:
-  - [git submodule update --init --remote --recursive, Installing submodules]
-  - [sudo fc-cache -f -v, Updating fonts]
-  - [vim +PlugInstall +qall]
+  - [nvim +PlugInstall +qall]

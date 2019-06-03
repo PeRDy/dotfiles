@@ -1,0 +1,13 @@
+{
+  "editor.formatOnPaste": false,
+  "suggest.echodocSupport": true,
+  "suggest.maxCompleteItemCount": 20,
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "typescriptreact", "json", "javascriptreact", "python"],
+  "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact"],
+  "diagnostic.errorSign": "•",
+  "diagnostic.warningSign": "•",
+  "diagnostic.infoSign": "•",
+  "python.setLinter": "flake8",
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["-l", "120"]
+}
