@@ -16,3 +16,6 @@
 [submodule "PyCharm/base16-idea"]
 	path = PyCharm/base16-idea
 	url = https://github.com/adilosa/base16-idea
+[submodule "dotbot-brew"]
+	path = dotbot-brew
+	url = https://github.com/d12frosted/dotbot-brew.git

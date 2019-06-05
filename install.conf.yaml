@@ -14,9 +14,13 @@
         force: true
         path: gitconfig
     ~/.config/nvim/:
-        relink: true
-        crate: true
+        force: true
+        create: true
+        glob: true
         path: nvim/*
+
+- brewfile:
+    - Brewfile
 
 - shell:
   - [nvim +PlugInstall +qall]

@@ -1,11 +1,8 @@
 fpath+=~/.zfunc
 autoload -U zmv
 
-# Set fzf installation directory path
-export FZF_BASE=$HOME/.fzf
-
 # Oh My Zsh
-export ZSH="/home/perdy/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="spaceship"
 plugins=(
   git
@@ -15,10 +12,10 @@ plugins=(
   pip
   jsontools
   vi-mode
+  fzf
   aws
   zsh-autosuggestions
   zsh-syntax-highlighting
-  fzf
 )
 source $ZSH/oh-my-zsh.sh
 
@@ -65,4 +62,8 @@ export PYTHONIOENCONDING=utf-8
 export PATH="$PATH:$HOME/bin"
 
 # added by travis gem
-[ -f /home/perdy/.travis/travis.sh ] && source /home/perdy/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+
+# Set fzf installation directory path
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
