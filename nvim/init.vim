@@ -6,8 +6,8 @@ if has("unix")
     let g:python_host_prog='/usr/bin/python2'
     let g:python3_host_prog='/usr/bin/python3'
     if s:uname == "Darwin\n"
-        let g:python_host_prog='/usr/bin/python2'
-        let g:python3_host_prog='/usr/bin/python3'
+        let g:python_host_prog='/usr/bin/python'
+        let g:python3_host_prog='/usr/local/bin/python3'
     endif
 endif
 
@@ -16,7 +16,7 @@ endif
 " ============================================================================ "
 
 " Don't put backups in current dir
-set backupdir=~/.local/share/nvim/backup 
+set backupdir=~/.local/share/nvim/backup
 set backup
 set noswapfile
 
@@ -214,7 +214,7 @@ let g:tagbar_type_markdown = {
 " VimTex "
 """"""""""
 let g:vimtex_compiler_progname = 'nvr'
-let g:tex_flavor = 'xelatex'
+" let g:tex_flavor = 'xelatex'
 let g:vimtex_syntax_minted = [
 \ {
 \   'lang' : 'c'
@@ -380,6 +380,7 @@ vmap <C-j> <Plug>(coc-snippets-select)
 """""""""""
 " Enable echodoc on startup
 let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'virtual'
 
 """""""""""
 " vim-jsx "
