@@ -27,8 +27,6 @@
   - yay
 
 - yay:
-  - arc-gtk-theme
-  - arc-icon-theme
   - authy
   - chromium
   - docker
@@ -51,6 +49,7 @@
   - python-pip
   - python-pluginbase
   - spotify
+  - vimix-cursors
   - vimix-gtk-themes-git
   - vimix-icon-theme
   - zsh
