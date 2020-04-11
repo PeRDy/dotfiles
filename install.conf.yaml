@@ -1,3 +1,7 @@
+- defaults:
+    link:
+      relink: true
+
 - clean: ['~']
 
 - shell:
@@ -19,8 +23,37 @@
         glob: true
         path: nvim/*
 
-- brewfile:
-    - Brewfile
+- pacman:
+  - yay
+
+- yay:
+  - arc-gtk-theme
+  - arc-icon-theme
+  - authy
+  - chromium
+  - docker
+  - docker-compose
+  - firefox
+  - fzf
+  - git
+  - gnome-tweaks
+  - grub-customizer
+  - grub-theme-vimix
+  - gvim
+  - jetbrains-toolbox
+  - moka-icon-theme
+  - neovim
+  - nerd-fonts-jetbrains-mono
+  - npm
+  - nvm
+  - openssh
+  - pyenv
+  - python-pip
+  - python-pluginbase
+  - spotify
+  - vimix-gtk-themes-git
+  - vimix-icon-theme
+  - zsh
 
 - shell:
   - [nvim +PlugInstall +qall]
