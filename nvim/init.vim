@@ -43,11 +43,13 @@ autocmd Filetype html setlocal ts=4 sts=4 sw=4
 autocmd FileType xml set
 autocmd FileType javascript setlocal ts=4 sts=4 sw=4
 autocmd FileType python setlocal ts=4 sts=4 sw=4
-autocmd FileType css setlocal ts=4 noet sw=4 
+autocmd FileType css setlocal ts=4 noet sw=4
 autocmd bufread *.coffee set ft=coffee
 autocmd bufread *.less set ft=less
 autocmd bufread *.md set ft=markdown
 autocmd BufReadPost *.conf set syntax=dosini
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " Mouse
 set mouse=a
