@@ -12,21 +12,32 @@
     excludesfile = ~/.gitexcludes
     editor = vim
 [alias]
+    alias = "!sh -c '[ $# = 2 ] && git config --global alias.\"$1\" \"$2\" && exit 0 || echo \"usage: git alias <new alias> <original command>\" >&2 && exit 1' -"
     b = branch
     ci = commit
     co = checkout
     cob = checkout -b
+    st = status
     d = diff
     l = log
-    stree = log --all --graph --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s' --abbrev-commit --date=relative
+    ri = rebase --interactive
     tree = log --all --graph --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    st = status
     fixup = "!bash -c 'if [[ $(git diff --cached| head -c1 | wc -c) -ne 0 ]]; then git reset --soft HEAD~1 && git commit -m \"$(git log --format='%B' --reverse HEAD..HEAD@{1})\"; else echo No changes staged; fi' -"
     squash = !sh -c 'git commit -a -m \"squash! $(git log -1 --format='%s' $@)\" && git rebase -i HEAD~2' -
-    ri = rebase --interactive
-    rc = rebase --continue
-    pr = push gerrit HEAD:refs/for/master
-    mt = mergetool
+    emojicommit = "!f() { git commit -m \"$1 $2\"; }; f"
+    cbuild = emojicommit :package:
+    cci = emojicommit :construction_worker:
+    cbreaking = emojicommit :boom:
+    cdocs = emojicommit :pencil:
+    cfeature = emojicommit :sparkles:
+    cbugfix = emojicommit :bug:
+    chotfix = emojicommit :ambulance:
+    cperf = emojicommit :zap:
+    crefactor = emojicommit :recycle:
+    cstyle = emojicommit :art:
+    ctest = emojicommit :white_check_mark:
+    cinitial = emojicommit :tada:
+    cversion = emojicommit :bookmark:
 [rebase]
     autosquash = true
 [merge]
