@@ -38,6 +38,8 @@
     ctest = emojicommit :white_check_mark:
     cinitial = emojicommit :tada:
     cversion = emojicommit :bookmark:
+    cwip = emojicommit :construction:
+    cconfig = emojicommit :wrench:
 [rebase]
     autosquash = true
 [merge]
