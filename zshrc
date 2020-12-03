@@ -21,8 +21,6 @@ plugins=(
   git
   docker
   docker-compose
-  brew
-  poetry
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
